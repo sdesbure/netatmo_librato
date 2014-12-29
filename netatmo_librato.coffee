@@ -53,7 +53,7 @@ getDevicelist = (err, devices, modules) ->
     device_name[device._id]=norm(device.station_name)
     device_end_time[device._id]=device.last_status_store
     end_time = device.last_status_store
-    time_to_retrieve = 3*ten_min_sec/2
+    time_to_retrieve = 2*ten_min_sec
     if device.type == 'NAMain'
       console.log "Weather Station detected"
       device_thermostat[device._id] = false
@@ -90,7 +90,7 @@ getDevicelist = (err, devices, modules) ->
       if device_thermostat[module.main_device]
         console.log "Thermostat module detected"
         module.data_type = ['Temperature', 'Sp_Temperature', 'BoilerOn', 'BoilerOff']
-        time_to_retrieve = 2*one_hour_sec
+        time_to_retrieve = 3*one_hour_sec/2
       else
         console.log "Weather module Station detected"
       if module.data_type != []
