@@ -18,8 +18,8 @@ You'll need a netatmo account, a netatmo application created and a librato accou
 
 For the one shot script, `-t`flag ask the script to retrieve also the value from a thermostat. It should be done every hour. For me, it seems that thermostat is updated just after half the hour.
 ```
-0,10,20,30,50 * * * * /opt/nodejes/netatmo_librato/netatmo_librato.coffee > /var/log.netatmo_librato.log
-40 * * * * /opt/nodejes/netatmo_librato/netatmo_librato.coffee -t > /var/log.netatmo_librato.log
+0,10,20,30,50 * * * * /opt/nodejes/netatmo_librato/netatmo_librato.coffee > /var/log/netatmo_librato.log
+40 * * * * /opt/nodejes/netatmo_librato/netatmo_librato.coffee -t > /var/log/netatmo_librato.log
 ```
 
 ## License
