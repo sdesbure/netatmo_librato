@@ -1,0 +1,5 @@
+
+netatmo:
+
+  thermostat_interval: 6 #nb times of Interval between each measure of thermostat
+  interval : 600000 #in ms
