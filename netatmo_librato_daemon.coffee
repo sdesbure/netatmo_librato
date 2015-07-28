@@ -6,8 +6,39 @@ xregexp = require('xregexp').XRegExp
 
 netatmo = require('netatmo')
 
-secret = require './secret.yml'
-config = require './config.yml'
+
+Parser = require('commandline-parser').Parser
+
+parser = new Parser({
+    name : "netatmo_librato_daemon",
+    desc : 'a daemon which send data from netatmo to librato',
+    extra : 'see https://github.com/sdesbure/netatmo_librato'
+})
+
+parser.addArgument('secret' ,{
+    flags : ['s','secret'],
+    desc : "path to the secret file (defaulting to ./secret.yml)",
+})
+
+parser.addArgument('config' ,{
+    flags : ['c','config'],
+    desc : "path to the config file (defaulting to ./config.yml)",
+})
+
+secret_file = parser.get('secret')
+
+if (!secret_file)
+  secret_file = './secret.yml'
+
+config_file = parser.get('config')
+if (!config_file)
+  config_file = './config.yml'
+
+console.log("secret file used: " + secret_file)
+console.log("config file used: " + config_file)
+
+secret = require secret_file
+config = require config_file
 
 console.log config
 root = exports ? this
